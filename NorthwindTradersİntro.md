@@ -24,6 +24,9 @@ Northwind Traders, lezzetin ve ticaretin bir araya geldiği bir dünyada yoluna 
 
 # Veri Setindeki Tabloların İlişkileri-ERD 🔗
 
+Veri setinin tabloları ve sütunları hakkında detaylı bilgi almak için [metadata](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Northwind_Traders_Metadata.xlsx) dosyasını indirebilirsiniz.
+
+
 ![image](https://raw.githubusercontent.com/pthom/northwind_psql/master/ER.png)
 
 # Veri Setindeki Sütunların Açıklamaları 📋
