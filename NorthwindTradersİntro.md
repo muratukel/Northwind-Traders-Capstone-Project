@@ -19,6 +19,15 @@ Northwind Traders, geleneksel veritabanı sistemlerinin ötesine geçmeyi ve iş
 
 Northwind Traders, lezzetin ve ticaretin bir araya geldiği bir dünyada yoluna devam ediyor. İş süreçlerini optimize etmek ve büyümeye devam etmek için teknolojiye olan bağlılığıyla tanınır. Sizleri, bu lezzetli ve yenilikçi dünyaya daha fazla göz atmaya davet ediyoruz! 💫
 
+CATEGORIES Tablosu
+
+Sütun Adı	Açıklama
+CategoryID	Kategorileri benzersiz bir şekilde tanımlayan kimlik numarası. Genellikle birincil anahtar olarak kullanılır.
+CategoryName	Kategorinin adı, örneğin "Elektronik", "Giyim" gibi.
+Description	Kategorinin açıklaması, kapsadığı ürün veya hizmetler hakkında metin bilgisi.
+Picture	Kategorinin resmi veya simgesi, görsel temsil sağlar. Genellikle bir bağlantı veya resim verisi içerir.
+
+
 # Veri Analizi: Northwind Traders'ın Başarısının Anahtarı 📈
 
 Northwind Traders olarak, müşterilerimize daha iyi hizmet sunabilmek ve iş süreçlerimizi optimize edebilmek için bir adım daha ileri gitmek amacıyla veri analizine önem veriyoruz. İşte bu analizin ardındaki nedenler:
