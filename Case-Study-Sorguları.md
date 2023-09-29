@@ -220,6 +220,4 @@ inner join  freight_by_month as fm
 | 11          | 84973.14                    | 98798.83                              | -13.99                            |
 | 12          | 110081.51                   | 84973.14                              | 29.55                             |
 
-### Bu ilk 4 case senaryosunu sql sorgusu  ile oluşturdum. Bu sorgularımı Jupyter Notebook'a atarak python üzerinden görselleştirme gerçekleştirdim. Bu görselleştirmeler üzerinden şirkete nasıl bir katma değer sağlanabilir ve sağlıklı iyileştirmeler yapılabilir adına önerilerde bulundum. [Jupyter Notebook Çalışma Dosyama Git](https://github.com/muratukel/EDA-SpotifyandYoutube/blob/main/EDASpotifyandYoutube%20.ipynb)
-
- buradan ulaşarak inceleyebilirsiniz.
+### Bu ilk 4 case senaryosunu sql sorgusu  ile oluşturdum. Bu sorgularımı Jupyter Notebook'a atarak python üzerinden görselleştirme gerçekleştirdim. Bu görselleştirmeler üzerinden şirkete nasıl bir katma değer sağlanabilir ve sağlıklı iyileştirmeler yapılabilir adına önerilerde bulundum. [Jupyter Notebook Çalışma Dosyama](https://github.com/muratukel/EDA-SpotifyandYoutube/blob/main/EDASpotifyandYoutube%20.ipynb) buradan ulaşarak inceleyebilirsiniz.
