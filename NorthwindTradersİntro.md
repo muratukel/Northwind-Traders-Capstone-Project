@@ -185,5 +185,8 @@ Northwind Traders olarak, veri analizi sayesinde iş süreçlerimizi optimize ed
 
 🌟🌐Şirkete katma değer katmak için Python ve Sql kullanarak yaptığım analizleri ve bu analizleri görselleştirdiğim Power BI da detaylara bakmak ve daha fazla bilgi edinmek için  GitHub depoma göz atabilirsiniz. İlginç, bilgilendirici ve hoşunuza gittiyse bana yıldız vermeyi unutmayın. 
 
-Python üzerinden yaptığım analizlere ulaşmak için [Northwind Traders Capstone Project Python Analiz ](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Python%20Analysis%20for%20Northwind%20Capstone%20Project.ipynb) dosyasına buradan ulaşabilirsiniz.
+Python üzerinden yaptığım analizlere ulaşmak için [Northwind Traders Capstone Project Python Analiz ](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Python%20Analysis%20for%20Northwind%20Capstone%20Project.ipynb) dosyasına bakabilirsiniz.
+
+Sql üzerinden yaptığım senaryo analizlerine ulaşmak için [Northwind Traders Capstone Project için Sorgu ](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Case-Study-Sorgular%C4%B1.md) dosyasına bakabilirsiniz.
+
 
