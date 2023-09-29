@@ -32,6 +32,19 @@ from top_selling_category
 	where rank=1
 order by top_selling_product desc
 ````
+
+| category_id | category_name          | product_name                    | top_selling_product | rank |
+|------------|------------------------|---------------------------------|---------------------|------|
+| 4          | Dairy Products         | Camembert Pierrot               | 1577                | 1    |
+| 5          | Grains/Cereals         | Gnocchi di nonna Alice          | 1263                | 1    |
+| 3          | Confections            | Pavlova                         | 1158                | 1    |
+| 1          | Beverages              | Rhönbräu Klosterbier            | 1155                | 1    |
+| 8          | Seafood                | Boston Crab Meat                | 1103                | 1    |
+| 6          | Meat/Poultry           | Alice Mutton                    | 978                 | 1    |
+| 7          | Produce                | Manjimup Dried Apples           | 886                 | 1    |
+| 2          | Condiments             | Original Frankfurter grüne Soße | 791                 | 1    |
+
+
 # CASE 2 : MÜŞTERİ ANALİZİ (PYTHON 2.Analiz)
 
 **Pazarlama ve lojistik ekibi, hangi ülkelerde ve müşterilerde daha fazla satış potansiyeli olduğunu analiz etmek istiyor.** 
