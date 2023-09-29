@@ -123,4 +123,101 @@ where rank=1
 | OCEAN       | Argentina    | 5            | 10                           | 112            | 0.00           | 3033.20              | 28                          | 14                            |
 | SANTG       | Norway       | 5            | 12                           | 127            | 0.00           | 5262.75              | 26                          | 9                             |
 
+# CASE 3 : Kargo Şirketi Analizi (PYTHON 3.Analiz)
+
+**Lojistik ekibi, farklı nakliyecilerin performansını analiz etmek istiyor.**
+
+**Sipariş detaylarını kullanarak her nakliyeci için toplam sipariş sayısı, ortalama kargo ücreti ve ortalama kargo süresini bulmak için bir sorgu yazdım. Sorgu sonucunda, online alışveriş sitesi hangi nakliyecinin daha hızlı, daha ucuz ve daha çok sipariş taşıdığını görebiliyor ve buna göre nakliye anlaşmalarını yenileyebiliyor. Örneğin, sorgu sonucunda Speedy Express’in en hızlı nakliyeci olduğunu, ancak United Package’in en çok sipariş taşıdığını görebiliriz.**
+
+- nakliyeci kimliği
+- nakliyeci şirket adı
+- toplam sipariş sayısı
+- ortalama kargo ücreti 
+- ortalama kargo süresi 
+
+````sql
+select 
+    s.shipper_id,
+    s.company_name,
+    count(distinct o.order_id) as total_orders,
+    round(avg(o.freight)::numeric,2) as avg_freight,
+    round(avg(extract(day from (o.shipped_date - o.order_date) * interval '1 DAY'))::numeric,0) as avg_shipping_days		
+from 
+	shippers as s
+left join orders as o 
+	on s.shipper_id = o.ship_via
+group by 
+    s.shipper_id, s.company_name;
+````
+
+| shipper_id | company_name       | total_orders | avg_freight | avg_shipping_days |
+|------------|--------------------|--------------|-------------|-------------------|
+| 1          | Speedy Express     | 249          | 65.00       | 9                 |
+| 2          | United Package     | 326          | 86.64       | 9                 |
+| 3          | Federal Shipping   | 255          | 80.44       | 7                 |
+| 4          | Alliance Shippers  | 0            |             |                   |
+| 5          | UPS                | 0            |             |                   |
+| 6          | DHL                | 0            |             |                   |
+
+# CASE 4 : GELİR ANALİZİ (PYTHON 4.Analiz)
+
+**Satış ekibi, son üç yılın her ay için gelir performansını analiz etmek istiyor. Bu amaçla, veritabanındaki sipariş detaylarını kullanarak her ay için toplam geliri ve toplam kargo ücretini bulmak için bir sorgu yazdım.**
+
+- sipariş ayı
+- kargo ücreti çıkarılmış gelir
+- bir önceki ayın kargo ücreti çıkarılmış geliri 
+- kargo ücreti çıkarılmış gelirdeki büyüme oranı
+
+````sql
+with revenue_by_month as (
+    select
+        extract(month from o.order_date) as order_month,
+        round(sum(od.unit_price * od.quantity * (1 - od.discount))::numeric, 2) as total_revenue
+    from
+        orders o
+    inner join order_details as od 
+		on o.order_id = od.order_id
+    group by
+        order_month
+    order by
+        order_month
+),
+freight_by_month as (
+    select
+        extract(month from o.order_date) as order_month,
+        round(sum(o.freight)::numeric, 2) as total_freight_price
+    from
+        orders o
+    group by
+        order_month
+    order by
+        order_month
+)
+select
+   rm.order_month,
+   rm.total_revenue - fm.total_freight_price as total_revenue_after_freight,
+   lag(rm.total_revenue - fm.total_freight_price) over (order by rm.order_month) as previous_month_revenue_after_freight,
+   round((rm.total_revenue - fm.total_freight_price - lag(rm.total_revenue - fm.total_freight_price) 
+   over (order by rm.order_month))::numeric / 
+   lag(rm.total_revenue - fm.total_freight_price) over (order by rm.order_month)::numeric * 100,2) as revenue_growth_rate_after_freight
+from
+    revenue_by_month as rm
+inner join  freight_by_month as fm 
+	on rm.order_month = fm.order_month;
+````
+| order_month | total_revenue_after_freight | previous_month_revenue_after_freight | revenue_growth_rate_after_freight |
+|-------------|-----------------------------|---------------------------------------|-----------------------------------|
+| 1           | 147777.76                   |                                       |                                   |
+| 2           | 132024.53                   | 147777.76                             | -10.66                            |
+| 3           | 136133.55                   | 132024.53                             | 3.11                              |
+| 4           | 167498.96                   | 136133.55                             | 23.04                             |
+| 5           | 67968.44                    | 167498.96                             | -59.42                            |
+| 6           | 34510.15                    | 67968.44                              | -49.23                            |
+| 7           | 75135.85                    | 34510.15                              | 117.72                            |
+| 8           | 68297.50                    | 75135.85                              | -9.10                             |
+| 9           | 77650.11                    | 68297.50                              | 13.69                             |
+| 10          | 98798.83                    | 77650.11                              | 27.24                             |
+| 11          | 84973.14                    | 98798.83                              | -13.99                            |
+| 12          | 110081.51                   | 84973.14                              | 29.55                             |
+
 
