@@ -19,7 +19,7 @@ Northwind Traders, geleneksel veritabanı sistemlerinin ötesine geçmeyi ve iş
 
 Northwind Traders, lezzetin ve ticaretin bir araya geldiği bir dünyada yoluna devam ediyor. İş süreçlerini optimize etmek ve büyümeye devam etmek için teknolojiye olan bağlılığıyla tanınır. Sizleri, bu lezzetli ve yenilikçi dünyaya daha fazla göz atmaya davet ediyoruz! 💫
 
-https://raw.githubusercontent.com/pthom/northwind_psql/master/ER.png
+![image](https://raw.githubusercontent.com/pthom/northwind_psql/master/ER.png)
 
 # Veri Setindeki Sütunların Açıklamaları 📋
 
