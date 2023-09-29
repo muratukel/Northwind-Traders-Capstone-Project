@@ -388,3 +388,52 @@ order by 1,4
 | Laura Callahan     | Inside Sales Coordinator | 87          | 1998       | 36609.64      |
 
 ❗İlk 4 çalışan performansı gösterilmiştir.
+
+# CASE 8: Bölge Analizi(SQL)(POWERBI)
+
+**İş Geliştirme Ekibi, yeni pazar yeri aramak için hangi bölgelerin daha fazla satış yaptığı veya daha yüksek ortalama gelir elde ettiği gibi bilgilere dayalı iş stratejileri geliştirmek için bir analiz istemektedir.**
+
+- şehirler
+- toplam siparişler
+- ortalama sipariş miktarı
+- ortalama gelir
+- ortalama indirim
+- ortalama teslimat süresi
+
+````sql
+select
+	t.territory_description,
+	count(distinct o.order_id) as total_orders,
+	round(avg(od.quantity)::numeric,2) as avg_order_quantity,
+	round(avg(od.unit_price * od.quantity * (1 - od.discount))::numeric,2) AS avg_order_revenue,
+    round(avg(od.discount)::numeric,2) AS avg_discount,
+	round(avg(extract(day from(o.shipped_date-o.order_date)*interval '1 Day')), 0) as avg_shipping_days
+from region as r 
+	left join territories as t
+		on t.region_id=r.region_id
+	left join employee_territories as et
+		on et.territory_id=t.territory_id
+	left join employees as e 
+		on e.employee_id=et.employee_id
+	left join orders as o 
+		on o.employee_id=e.employee_id
+	left join order_details as od
+		on od.order_id=o.order_id
+group by 1
+````
+
+| territory_description | total_orders | avg_order_quantity | avg_order_revenue | avg_discount | avg_shipping_days |
+|-----------------------|--------------|--------------------|-------------------|--------------|-------------------|
+| Atlanta               | 127          | 24.46              | 631.82            | 0.05         | 9                 |
+| Austin                | 0            |                    |                   |              |                   |
+| Beachwood             | 104          | 22.74              | 487.93            | 0.06         | 9                 |
+| Bedford               | 96           | 25.12              | 691.03            | 0.04         | 8                 |
+| Bellevue              | 67           | 20.99              | 439.96            | 0.05         | 9                 |
+| Bentonville           | 0            |                    |                   |              |                   |
+| Bloomfield Hills      | 43           | 24.95              | 722.51            | 0.07         | 10                |
+| Boston                | 96           | 25.12              | 691.03            | 0.04         | 8                 |
+| Braintree             | 96           | 25.12              | 691.03            | 0.04         | 8                 |
+| Cambridge             | 96           | 25.12              | 691.03            | 0.04         | 8                 |
+
+
+❗Sorgu çıktısının ilk 10 satırı alınmıştır.
