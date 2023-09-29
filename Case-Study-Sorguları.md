@@ -437,3 +437,108 @@ group by 1
 
 
 ❗Sorgu çıktısının ilk 10 satırı alınmıştır.
+
+# BONUS ANALYSİS:
+
+## Ürün-Stok Analizi:
+
+````sql
+with product_stats as (
+    select 
+        p.product_id,
+        p.product_name,
+        p.unit_in_stock,
+        round(sum(od.unit_price * od.quantity*(1-od.discount))::numeric,2) as total_sales_revenue,
+        count(distinct o.order_id) as total_order_count,
+        round(avg((o.shipped_date) - (o.order_date)),0) as avg_delivery_days
+    from products p 
+    join order_details od on p.product_id = od.product_id 
+    join orders o on od.order_id = o.order_id 
+    group by p.product_id
+)
+select 
+    product_name,
+    unit_in_stock,
+    total_sales_revenue,
+    total_order_count,
+    avg_delivery_days,
+    rank() over (partition by case when unit_in_stock = 0 then 'Out of Stock' 
+				 else 'In Stock' end order by total_sales_revenue desc) as rank_by_revenue,
+    rank() over (partition by case when unit_in_stock = 0 then 'Out of Stock' 
+				 else 'In Stock' end order by total_order_count desc) as rank_by_order_count,
+    rank() over (partition by case when unit_in_stock = 0 then 'Out of Stock' 
+				 else 'In Stock' end order by avg_delivery_days desc) as rank_by_delivery_days
+from product_stats;
+````
+
+## KATEGORİ-NAKLİYECİ ANALİZİ:	
+
+**Şirket kategorilere göre, kargo şirketlerinin toplam kargo maliyetini öğrenmek istiyor.**
+
+````sql
+select 
+	s.shipper_id,
+	s.company_name,
+	c.category_name,
+	sum(o.freight)  as total_shipping_freight
+from shippers as s
+	left join orders as o
+		on o.ship_via=s.shipper_id
+	left join order_details as od
+		on o.order_id=od.order_id
+	left join products as p	
+		on od.product_id=p.product_id
+	left join categories as c
+		on c.category_id=p.category_id
+group by 1,2,3
+order by 1 , 4 desc
+````
+	
+	
+## ÜRÜN-GELİR ANALİZİ:
+
+**Her bir ürünün tedarikçisi ile birlikte sipariş ve gelir analizi istenmektedir.**
+
+````sql
+with product_margins as (
+    select
+        p.product_id,
+        p.product_name,
+        p.supplier_id,
+        s.company_name,
+		count(od.order_id) as order_count,
+		sum(od.quantity) as total_sold_quantity,
+        round(sum(od.unit_price * od.quantity *  (1 - od.discount))::numeric,2) as total_revenue 
+   from
+        products as p
+    inner join order_details as od 
+		on p.product_id = od.product_id
+    inner join suppliers as s 
+		on p.supplier_id = s.supplier_id
+	inner join orders as o
+		on o.order_id=od.order_id
+    group by
+        p.product_id, p.product_name, p.supplier_id, s.company_name
+)
+select
+   *,
+	round((total_revenue/total_sold_quantity),2) as avg_revenue_per_order_percentage
+from
+    product_margins
+order by total_sold_quantity desc	
+limit 10 ;
+````
+	
+## Ürün Stok Durumu:
+**Hangi ürünlerin stokta olduğunu ve stok seviyelerini belirlemek için**
+
+````sql
+select 
+    p.product_id,
+    p.product_name,
+    p.quantity_per_unit,
+    p.unit_in_stock AS stok_miktari
+from products as p
+where p.unit_in_stock > 0
+order by p.product_id;
+````
