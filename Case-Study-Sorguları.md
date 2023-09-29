@@ -226,9 +226,9 @@ inner join  freight_by_month as fm
 
 **Satış ekibi,hangi kategorilerde daha fazla veya daha az satış yaptığını, hangi kategorilerde daha fazla veya daha az indirim uyguladığını ve hangi kategorilerin daha karlı veya daha az karlı olduğunu analiz edilmesini istiyor.**
 
---kategori ismi
---sipariş sayısı
---toplam indirim
---ortalama birim fiyatı
---toplam gelir 
---indirim-gelir oranı
+- kategori ismi
+- sipariş sayısı
+- toplam indirim
+- ortalama birim fiyatı
+- toplam gelir 
+- indirim-gelir oranı
