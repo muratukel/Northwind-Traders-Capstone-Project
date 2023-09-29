@@ -232,3 +232,99 @@ inner join  freight_by_month as fm
 - ortalama birim fiyatı
 - toplam gelir 
 - indirim-gelir oranı
+
+````sql
+with category_price as 
+(
+select 
+	c.category_name,
+	count(od.order_id) as order_count,
+	round(sum(od.unit_price*od.quantity*od.discount)::numeric,2) as total_discount,
+	round(avg(od.unit_price)::numeric,2) as avg_unit_price,
+	round(sum(od.unit_price * od.quantity * (1 - od.discount))::numeric,2) as total_revenue,
+	round(sum(o.freight)::numeric,2) as total_freight_price
+from categories as c
+left join products as p 
+	on p.category_id=c.category_id
+left join order_details as od
+	on od.product_id=p.product_id
+left join orders as o
+	on o.order_id=od.order_id
+group by 1
+order by 5 desc
+)
+select 
+	category_name,
+	order_count,
+	total_discount,
+	avg_unit_price,
+	total_revenue - total_freight_price as total_revenue_by_category,
+ 	round(total_discount / total_revenue * 100, 2) as discount_to_revenue_ratio
+from category_price 
+order by total_revenue_by_category desc
+````
+| category_name     | order_count | total_discount | avg_unit_price | total_revenue_by_category | discount_to_revenue_ratio |
+|-------------------|-------------|----------------|----------------|---------------------------|---------------------------|
+| Beverages         | 404         | 18658.77       | 29.24          | 227981.48                 | 6.97                      |
+| Dairy Products    | 366         | 16823.22       | 26.98          | 196343.28                 | 7.17                      |
+| Meat/Poultry      | 173         | 15166.44       | 42.87          | 145253.16                 | 9.30                      |
+| Confections       | 334         | 9741.88        | 22.60          | 134537.33                 | 5.82                      |
+| Seafood           | 330         | 10361.35       | 19.06          | 103538.74                 | 7.89                      |
+| Produce           | 136         | 5284.02        | 35.19          | 86858.78                  | 5.28                      |
+| Condiments        | 216         | 7647.67        | 21.32          | 85980.08                  | 7.21                      |
+| Grains/Cereals    | 196         | 4982.21        | 21.25          | 77994.09                  | 5.20                      |
+
+# CASE 6 : TEDARİKÇİ ANALİZİ(SQL)(POWERBI)
+
+**İş ve proje planlama ekibi,farklı tedarikçilerden aldığı ürünlerin performansını ve trendlerini analiz etmek istiyor.**
+
+- tedarikçi kimliği 
+- tedarikçi şirket adı 
+- ülke 
+- sipariş yılı
+- ürün sayısı 
+- ortalama birim fiyatı
+
+  ````sql
+  with limit_ten_order as 
+(
+select 
+	s.supplier_id,
+	s.company_name,
+	s.country,
+	extract(year from o.order_date) as order_year,
+	count(p.product_id) as product_count,
+	round(avg(p.unit_price)::numeric,2) as avg_unit_price
+from suppliers as s
+	left join products as p
+		on p.supplier_id=s.supplier_id
+	left join order_details as od
+		on od.product_id=p.product_id
+	left join orders as o 
+		on o.order_id=od.order_id	
+group by 1,2,3,4
+ order by 1 
+)
+select 
+	*
+from limit_ten_order
+````
+
+| supplier_id | company_name                | country   | order_year | product_count | avg_unit_price |
+|-------------|-----------------------------|-----------|------------|---------------|----------------|
+| 1           | Exotic Liquids              | UK        | 1996       | 9             | 18.00          |
+| 1           | Exotic Liquids              | UK        | 1997       | 25            | 16.48          |
+| 1           | Exotic Liquids              | UK        | 1998       | 22            | 17.36          |
+| 2           | New Orleans Cajun Delights  | USA       | 1996       | 18            | 21.16          |
+| 2           | New Orleans Cajun Delights  | USA       | 1997       | 36            | 20.66          |
+| 2           | New Orleans Cajun Delights  | USA       | 1998       | 16            | 21.17          |
+| 3           | Grandma Kelly's Homestead   | USA       | 1996       | 6             | 31.67          |
+| 3           | Grandma Kelly's Homestead   | USA       | 1997       | 17            | 32.35          |
+| 3           | Grandma Kelly's Homestead   | USA       | 1998       | 31            | 30.65          |
+| 4           | Tokyo Traders               | Japan     | 1996       | 9             | 19.33          |
+| 4           | Tokyo Traders               | Japan     | 1997       | 29            | 35.76          |
+| 4           | Tokyo Traders               | Japan     | 1998       | 13            | 32.85          |
+
+#### ❗İlk 4 tedarikçinin olduğu sorgu çıktısını gösterdim.
+
+
