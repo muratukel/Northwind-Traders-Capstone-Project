@@ -10,6 +10,7 @@
 - Toplam satılan ürün sayısı
 - Sıralaması
 
+
 ````sql
 with top_selling_category as 
 (
@@ -32,6 +33,7 @@ from top_selling_category
 	where rank=1
 order by top_selling_product desc
 ````
+
 
 | category_id | category_name          | product_name                    | top_selling_product | rank |
 |------------|------------------------|---------------------------------|---------------------|------|
@@ -342,7 +344,7 @@ from limit_ten_order
 
 
 
-  ````sql
+````sql
 with employee_performance as 
 (
 select 
