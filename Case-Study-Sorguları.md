@@ -471,6 +471,22 @@ select
 from product_stats;
 ````
 
+| product_name            | unit_in_stock | total_sales_revenue | total_order_count | avg_delivery_days | rank_by_revenue | rank_by_order_count | rank_by_delivery_days |
+|-------------------------|---------------|---------------------|-------------------|-------------------|-----------------|---------------------|------------------------|
+| Côte de Blaye           | 17            | 141396.74           | 24                | 10                | 1               | 42                  | 6                      |
+| Raclette Courdavault    | 79            | 71155.70            | 54                | 7                 | 2               | 1                   | 54                     |
+| Tarte au sucre          | 17            | 47234.97            | 48                | 9                 | 3               | 5                   | 9                      |
+| Camembert Pierrot       | 19            | 46825.48            | 51                | 9                 | 4               | 2                   | 9                      |
+| Gnocchi di nonna Alice  | 21            | 42593.06            | 50                | 9                 | 5               | 4                   | 9                      |
+| Manjimup Dried Apples   | 20            | 41819.65            | 39                | 7                 | 6               | 13                  | 54                     |
+| Carnarvon Tigers        | 42            | 29171.87            | 27                | 8                 | 7               | 40                  | 37                     |
+| Rössle Sauerkraut       | 26            | 25696.64            | 33                | 9                 | 8               | 25                  | 9                      |
+| Mozzarella di Giovanni  | 14            | 24900.13            | 38                | 7                 | 9               | 17                  | 54                     |
+| Ipoh Coffee             | 17            | 23526.70            | 28                | 9                 | 10              | 39                  | 9                      |
+
+❗Sorgu çıktısının ilk 10 satırı alınmıştır.
+
+
 ## KATEGORİ-NAKLİYECİ ANALİZİ:	
 
 **Şirket kategorilere göre, kargo şirketlerinin toplam kargo maliyetini öğrenmek istiyor.**
@@ -493,6 +509,36 @@ from shippers as s
 group by 1,2,3
 order by 1 , 4 desc
 ````
+
+| shipper_id | company_name       | category_name     | total_shipping_freight |
+|------------|--------------------|-------------------|-------------------------|
+| 1          | Speedy Express     | Beverages         | 9953.848                |
+| 1          | Speedy Express     | Dairy Products   | 9601.76                 |
+| 1          | Speedy Express     | Confections       | 8169.7305               |
+| 1          | Speedy Express     | Seafood           | 6986.6187               |
+| 1          | Speedy Express     | Grains/Cereals    | 5882.0107               |
+| 1          | Speedy Express     | Condiments        | 5325.9595               |
+| 1          | Speedy Express     | Meat/Poultry      | 3611.8796               |
+| 1          | Speedy Express     | Produce           | 2759.3398               |
+| 2          | United Package     | Beverages         | 18412.74                |
+| 2          | United Package     | Dairy Products   | 16705.643               |
+| 2          | United Package     | Confections       | 13926.278               |
+| 2          | United Package     | Seafood           | 11559.159               |
+| 2          | United Package     | Condiments        | 9330.521                |
+| 2          | United Package     | Meat/Poultry      | 8945.3                  |
+| 2          | United Package     | Grains/Cereals    | 7431.329                |
+| 2          | United Package     | Produce           | 5258.8296               |
+| 3          | Federal Shipping   | Dairy Products   | 11856.611               |
+| 3          | Federal Shipping   | Beverages         | 11520.142               |
+| 3          | Federal Shipping   | Confections       | 10723.901               |
+| 3          | Federal Shipping   | Seafood           | 9177.177                |
+| 3          | Federal Shipping   | Condiments        | 5410.4897               |
+| 3          | Federal Shipping   | Meat/Poultry      | 5212.001                |
+| 3          | Federal Shipping   | Produce           | 5107.6597               |
+| 3          | Federal Shipping   | Grains/Cereals    | 4437.16                 |
+| 4          | Alliance Shippers  |                   |                         |
+| 5          | UPS                |                   |                         |
+| 6          | DHL                |                   |                         |
 	
 	
 ## ÜRÜN-GELİR ANALİZİ:
@@ -528,7 +574,22 @@ from
 order by total_sold_quantity desc	
 limit 10 ;
 ````
-	
+
+| product_id | product_name            | supplier_id | company_name                  | order_count | total_sold_quantity | total_revenue | avg_revenue_per_order_percentage |
+|------------|-------------------------|-------------|-------------------------------|-------------|---------------------|---------------|-----------------------------------|
+| 60         | Camembert Pierrot       | 28          | Gai pâturage                  | 51          | 1577                | 46825.48      | 29.69                             |
+| 59         | Raclette Courdavault    | 28          | Gai pâturage                  | 54          | 1496                | 71155.70      | 47.56                             |
+| 31         | Gorgonzola Telino       | 14          | Formaggi Fortini s.r.l.       | 51          | 1397                | 14920.87      | 10.68                             |
+| 56         | Gnocchi di nonna Alice  | 26          | Pasta Buttini s.r.l.         | 50          | 1263                | 42593.06      | 33.72                             |
+| 16         | Pavlova                 | 7           | Pavlova, Ltd.                | 43          | 1158                | 17215.78      | 14.87                             |
+| 75         | Rhönbräu Klosterbier    | 12          | Plutzer Lebensmittelgroßmärkte AG | 46       | 1155                | 8177.49       | 7.08                              |
+| 24         | Guaraná Fantástica      | 10          | Refrescos Americanas LTDA     | 51          | 1125                | 4504.36       | 4.00                              |
+| 40         | Boston Crab Meat        | 19          | New England Seafood Cannery  | 41          | 1103                | 17910.63      | 16.24                             |
+| 62         | Tarte au sucre          | 29          | Forêts d'érables              | 48          | 1083                | 47234.97      | 43.61                             |
+| 71         | Flotemysost             | 15          | Norske Meierier               | 42          | 1057                | 19551.03      | 18.50                             |
+
+
+ 
 ## Ürün Stok Durumu:
 **Hangi ürünlerin stokta olduğunu ve stok seviyelerini belirlemek için**
 
@@ -542,3 +603,18 @@ from products as p
 where p.unit_in_stock > 0
 order by p.product_id;
 ````
+
+| product_id | product_name                    | quantity_per_unit          | stok_miktari |
+|------------|---------------------------------|----------------------------|--------------|
+| 1          | Chai                            | 10 boxes x 30 bags        | 39           |
+| 2          | Chang                           | 24 - 12 oz bottles        | 17           |
+| 3          | Aniseed Syrup                   | 12 - 550 ml bottles       | 13           |
+| 4          | Chef Anton's Cajun Seasoning    | 48 - 6 oz jars            | 53           |
+| 6          | Grandma's Boysenberry Spread    | 12 - 8 oz jars            | 120          |
+| 7          | Uncle Bob's Organic Dried Pears | 12 - 1 lb pkgs.           | 15           |
+| 8          | Northwoods Cranberry Sauce      | 12 - 12 oz jars           | 6            |
+| 9          | Mishi Kobe Niku                 | 18 - 500 g pkgs.          | 29           |
+| 10         | Ikura                           | 12 - 200 ml jars          | 31           |
+
+
+❗Sorgu çıktısının ilk 10 satırı alınmıştır.
