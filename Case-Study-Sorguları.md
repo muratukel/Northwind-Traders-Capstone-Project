@@ -276,7 +276,7 @@ order by total_revenue_by_category desc
 | Condiments        | 216         | 7647.67        | 21.32          | 85980.08                  | 7.21                      |
 | Grains/Cereals    | 196         | 4982.21        | 21.25          | 77994.09                  | 5.20                      |
 
-**Bu sorgumun Power BI görselleştirmesin [buradan](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Northwind%20Traders%20Dashboard-1.pdf) ulaşabilirsiniz.**
+**Bu sorgumun Power BI görselleştirmesine [buradan](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Northwind%20Traders%20Dashboard-1.pdf) ulaşabilirsiniz.**
 
 
 # CASE 6 : TEDARİKÇİ ANALİZİ(SQL)(POWERBI)
@@ -335,6 +335,9 @@ from limit_ten_order
 
 #### ❗İlk 4 tedarikçinin olduğu sorgu çıktısını gösterdim.
 
+**Bu sorgumun Power BI görselleştirmesine [buradan](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Northwind%20Traders%20Dashboard-2.pdf) ulaşabilirsiniz.**
+
+
 # CASE 7 : ÇALIŞAN PERFORMANS ANALİZİ(SQL)(POWERBI)
 
 **İnsan kaynakları ekibi,çalışanlarının performansını ve verimliliğini analiz etmek istiyor.**
@@ -391,6 +394,9 @@ order by 1,4
 | Laura Callahan     | Inside Sales Coordinator | 87          | 1998       | 36609.64      |
 
 ❗İlk 4 çalışan performansı gösterilmiştir.
+
+**Bu sorgumun Power BI görselleştirmesine [buradan](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Northwind%20Traders%20Dashboard-3.pdf) ulaşabilirsiniz.**
+
 
 # CASE 8: Bölge Analizi(SQL)(POWERBI)
 
