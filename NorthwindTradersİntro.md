@@ -19,6 +19,8 @@ Northwind Traders, geleneksel veritabanı sistemlerinin ötesine geçmeyi ve iş
 
 Northwind Traders, lezzetin ve ticaretin bir araya geldiği bir dünyada yoluna devam ediyor. İş süreçlerini optimize etmek ve büyümeye devam etmek için teknolojiye olan bağlılığıyla tanınır. Sizleri, bu lezzetli ve yenilikçi dünyaya daha fazla göz atmaya davet ediyoruz! 💫
 
+# Veri Setindeki Sütunların Açıklamaları 📋
+
 ## CATEGORIES Tablosu
 
 | Sütun Adı   | Açıklama                                              |
@@ -43,7 +45,6 @@ Northwind Traders, lezzetin ve ticaretin bir araya geldiği bir dünyada yoluna 
 | Country         | Müşterinin bulunduğu ülke.           |
 | Phone           | Müşterinin telefon numarası, iletişim için kullanılır.            |
 | Fax             | Müşterinin faks numarası, ihtiyaç halinde iletişim için kullanılır.            |
-
 
 ## EMPLOYEES Tablosu
 
