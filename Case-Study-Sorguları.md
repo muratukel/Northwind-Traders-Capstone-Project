@@ -276,6 +276,9 @@ order by total_revenue_by_category desc
 | Condiments        | 216         | 7647.67        | 21.32          | 85980.08                  | 7.21                      |
 | Grains/Cereals    | 196         | 4982.21        | 21.25          | 77994.09                  | 5.20                      |
 
+**Bu sorgumun Power BI görselleştirmesin [buradan](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Northwind%20Traders%20Dashboard-1.pdf) ulaşabilirsiniz.**
+
+
 # CASE 6 : TEDARİKÇİ ANALİZİ(SQL)(POWERBI)
 
 **İş ve proje planlama ekibi,farklı tedarikçilerden aldığı ürünlerin performansını ve trendlerini analiz etmek istiyor.**
