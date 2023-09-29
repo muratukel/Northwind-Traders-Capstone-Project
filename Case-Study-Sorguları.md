@@ -222,7 +222,7 @@ inner join  freight_by_month as fm
 
 #### ‼️ İlk 4 senaryoyu SQL sorgularıyla oluşturdum ve bu sorguları Jupyter Notebook üzerine aktararak Python ile görselleştirmeler yaptım. Bu görselleştirmeleri kullanarak şirket için potansiyel katma değerler ve yapılacak sağlıklı iyileştirmeler konusunda önerilerde bulundum. [Jupyter Notebook Çalışma Dosyama](https://github.com/muratukel/EDA-SpotifyandYoutube/blob/main/EDASpotifyandYoutube%20.ipynb) buradan ulaşarak inceleyebilirsiniz.
 
-# CASE 5 : KATEGORİ ANALİZİ(EMİNİM)(SQL)(POWERBI)
+# CASE 5 : KATEGORİ ANALİZİ(SQL)(POWERBI)
 
 **Satış ekibi,hangi kategorilerde daha fazla veya daha az satış yaptığını, hangi kategorilerde daha fazla veya daha az indirim uyguladığını ve hangi kategorilerin daha karlı veya daha az karlı olduğunu analiz edilmesini istiyor.**
 
@@ -330,4 +330,59 @@ from limit_ten_order
 
 #### ❗İlk 4 tedarikçinin olduğu sorgu çıktısını gösterdim.
 
+# CASE 7 : ÇALIŞAN PERFORMANS ANALİZİ(SQL)(POWERBI)
 
+**İnsan kaynakları ekibi,çalışanlarının performansını ve verimliliğini analiz etmek istiyor.**
+
+- çalışanın tam adı 
+- unvanı 
+- sipariş sayısı
+- sipariş yılı 
+- toplam gelir
+
+
+
+  ````sql
+with employee_performance as 
+(
+select 
+	concat(e.first_name, ' ', e.last_name) AS employee_full_name,
+	e.title,
+	count(o.order_id) as order_count,
+	extract(year from o.order_date) as order_year,
+	round(sum(o.freight)::numeric,2) as total_freight,
+	round(sum(od.unit_price*od.quantity*(1 - od.discount))::numeric,2) as total_order_revenue
+from employees as e 
+	left join orders as o 
+		on o.employee_id=e.employee_id
+	left join order_details as od
+		on od.order_id=o.order_id
+group by 1,2,4	
+)
+select 
+	employee_full_name,
+	title,
+	order_count,
+	order_year,
+	total_order_revenue - total_freight as total_revenue
+from employee_performance	
+order by 1,4	
+````
+
+
+| employee_full_name | title                   | order_count | order_year | total_revenue |
+|--------------------|-------------------------|-------------|------------|---------------|
+| Andrew Fuller      | Vice President, Sales   | 40          | 1996       | 19171.54      |
+| Andrew Fuller      | Vice President, Sales   | 102         | 1997       | 57015.64      |
+| Andrew Fuller      | Vice President, Sales   | 99          | 1998       | 64426.09      |
+| Anne Dodsworth     | Sales Representative    | 16          | 1996       | 7607.43       |
+| Anne Dodsworth     | Sales Representative    | 45          | 1997       | 23335.66      |
+| Anne Dodsworth     | Sales Representative    | 46          | 1998       | 36149.28      |
+| Janet Leverling    | Sales Representative    | 43          | 1996       | 15740.38      |
+| Janet Leverling    | Sales Representative    | 184         | 1997       | 83918.06      |
+| Janet Leverling    | Sales Representative    | 94          | 1998       | 67370.78      |
+| Laura Callahan     | Inside Sales Coordinator | 49          | 1996       | 18926.68      |
+| Laura Callahan     | Inside Sales Coordinator | 124         | 1997       | 48021.55      |
+| Laura Callahan     | Inside Sales Coordinator | 87          | 1998       | 36609.64      |
+
+####❗İlk 4 çalışan performansı gösterilmiştir.
