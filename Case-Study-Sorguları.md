@@ -286,7 +286,7 @@ order by total_revenue_by_category desc
 - ortalama birim fiyatı
 
   ````sql
-  with limit_ten_order as 
+with limit_ten_order as 
 (
 select 
 	s.supplier_id,
