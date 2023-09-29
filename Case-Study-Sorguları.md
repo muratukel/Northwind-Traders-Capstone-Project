@@ -220,4 +220,4 @@ inner join  freight_by_month as fm
 | 11          | 84973.14                    | 98798.83                              | -13.99                            |
 | 12          | 110081.51                   | 84973.14                              | 29.55                             |
 
-
+### Bu ilk 4 case senaryosunu sql sorgusu  ile oluşturdum. Bu sorgularımı Jupyter Notebook'a atarak python üzerinden görselleştirme gerçekleştirdim. Bu görselleştirmeler üzerinden şirkete nasıl bir katma değer sağlanabilir ve sağlıklı iyileştirmeler yapılabilir adına önerilerde bulundum.![Jupyter Notebook Çalışma Dosyanına](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Python%20Analysis%20for%20Northwind%20Capstone%20Project.ipynb) buradan ulaşarak inceleyebilirsiniz.
