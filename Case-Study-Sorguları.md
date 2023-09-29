@@ -98,3 +98,29 @@ select
 from customers_analysis 
 where rank=1
 ````
+
+| customer_id | country      | order_number | ordered_total_product_number | total_quantity | total_discount | customer_total_spend | customer_average_wanted_days | average_delivery_time_in_days |
+|-------------|--------------|--------------|------------------------------|----------------|----------------|----------------------|-----------------------------|-------------------------------|
+| SAVEA       | USA          | 31           | 93                           | 3963           | 7264.94        | 72513.61             | 28                          | 9                             |
+| ERNSH       | Austria      | 30           | 83                           | 3835           | 7002.66        | 89521.54             | 29                          | 7                             |
+| QUICK       | Germany      | 27           | 73                           | 3462           | 6074.00        | 97398.80             | 25                          | 10                            |
+| FOLKO       | Sweden       | 19           | 41                           | 1119           | 1364.61        | 23994.44             | 29                          | 9                             |
+| HUNGO       | Ireland      | 19           | 44                           | 1377           | 4122.04        | 27867.65             | 29                          | 11                            |
+| BONAP       | France       | 17           | 42                           | 934            | 1835.50        | 20971.45             | 26                          | 9                             |
+| WARTH       | Finland      | 14           | 31                           | 634            | 928.80         | 12161.40             | 29                          | 6                             |
+| MEREP       | Canada       | 13           | 28                           | 841            | 3188.86        | 26246.54             | 32                          | 5                             |
+| QUEEN       | Brazil       | 13           | 36                           | 936            | 4301.00        | 23730.00             | 29                          | 8                             |
+| AROUT       | UK           | 12           | 27                           | 592            | 358.85         | 12482.25             | 25                          | 6                             |
+| LINOD       | Venezuela    | 12           | 31                           | 876            | 1364.59        | 14336.96             | 30                          | 8                             |
+| VAFFE       | Denmark      | 11           | 27                           | 664            | 348.08         | 11575.22             | 24                          | 6                             |
+| SUPRD       | Belgium      | 11           | 30                           | 850            | 615.62         | 19107.58             | 31                          | 9                             |
+| MAGAA       | Italy        | 10           | 16                           | 328            | 342.55         | 6159.05              | 28                          | 5                             |
+| TORTU       | Mexico       | 10           | 23                           | 327            | 0.00           | 9424.45              | 24                          | 8                             |
+| GODOS       | Spain        | 10           | 20                           | 313            | 352.54         | 7607.76              | 28                          | 6                             |
+| RICSU       | Switzerland  | 10           | 26                           | 674            | 431.32         | 12355.44             | 26                          | 9                             |
+| FURIB       | Portugal     | 8            | 19                           | 339            | 724.13         | 6391.42              | 29                          | 8                             |
+| WOLZA       | Poland       | 7            | 12                           | 167            | 0.00           | 2989.95              | 23                          | 9                             |
+| OCEAN       | Argentina    | 5            | 10                           | 112            | 0.00           | 3033.20              | 28                          | 14                            |
+| SANTG       | Norway       | 5            | 12                           | 127            | 0.00           | 5262.75              | 26                          | 9                             |
+
+
