@@ -284,8 +284,9 @@ order by total_revenue_by_category desc
 - sipariş yılı
 - ürün sayısı 
 - ortalama birim fiyatı
+  
 
-  ````sql
+````sql
 with limit_ten_order as 
 (
 select 
@@ -309,6 +310,8 @@ select
 	*
 from limit_ten_order
 ````
+
+
 
 | supplier_id | company_name                | country   | order_year | product_count | avg_unit_price |
 |-------------|-----------------------------|-----------|------------|---------------|----------------|
