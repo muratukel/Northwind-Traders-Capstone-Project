@@ -35,4 +35,4 @@ Northwind Traders olarak, müşterilerimize daha iyi hizmet sunabilmek ve iş s�
 
 Northwind Traders olarak, veri analizi sayesinde iş süreçlerimizi optimize ediyor, müşteri memnuniyetini artırıyor ve geleceğe daha güçlü bir şekilde hazırlanıyoruz. Bu analiz, işletmemizin başarısının anahtarıdır ve müşterilerimize daha iyi hizmet sunmak için sürekli olarak veriye dayalı çözümler arıyoruz.
 
-Python ve Sql kullanarak yaptığım analizleri ve bu analizleri görselleştirdiğim Power BI da detaylara bakmak ve daha fazla bilgi edinmek için  GitHub depoma göz atabilirsiniz. İlginç, bilgilendirici ve hoşunuza gittiyse bana yıldız vermeyi unutmayın. 🌐👇
+🌟🌐Python ve Sql kullanarak yaptığım analizleri ve bu analizleri görselleştirdiğim Power BI da detaylara bakmak ve daha fazla bilgi edinmek için  GitHub depoma göz atabilirsiniz. İlginç, bilgilendirici ve hoşunuza gittiyse bana yıldız vermeyi unutmayın. 
