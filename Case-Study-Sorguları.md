@@ -221,3 +221,14 @@ inner join  freight_by_month as fm
 | 12          | 110081.51                   | 84973.14                              | 29.55                             |
 
 #### ‼️ İlk 4 senaryoyu SQL sorgularıyla oluşturdum ve bu sorguları Jupyter Notebook üzerine aktararak Python ile görselleştirmeler yaptım. Bu görselleştirmeleri kullanarak şirket için potansiyel katma değerler ve yapılacak sağlıklı iyileştirmeler konusunda önerilerde bulundum. [Jupyter Notebook Çalışma Dosyama](https://github.com/muratukel/EDA-SpotifyandYoutube/blob/main/EDASpotifyandYoutube%20.ipynb) buradan ulaşarak inceleyebilirsiniz.
+
+# CASE 5 : KATEGORİ ANALİZİ(EMİNİM)(SQL)(POWERBI)
+
+**Satış ekibi,hangi kategorilerde daha fazla veya daha az satış yaptığını, hangi kategorilerde daha fazla veya daha az indirim uyguladığını ve hangi kategorilerin daha karlı veya daha az karlı olduğunu analiz edilmesini istiyor.**
+
+--kategori ismi
+--sipariş sayısı
+--toplam indirim
+--ortalama birim fiyatı
+--toplam gelir 
+--indirim-gelir oranı
