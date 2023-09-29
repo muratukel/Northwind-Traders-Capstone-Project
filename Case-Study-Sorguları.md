@@ -450,7 +450,7 @@ group by 1
 **Bu sorgumun Power BI görselleştirmesine [buradan](https://github.com/muratukel/Northwind-Traders-Capstone-Project/blob/main/Northwind%20Traders%20Dashboard-4.pdf) ulaşabilirsiniz.**
 
 
-# BONUS ANALYSİS:
+# BONUS ANALİZLER:
 
 ## Ürün-Stok Analizi:
 
