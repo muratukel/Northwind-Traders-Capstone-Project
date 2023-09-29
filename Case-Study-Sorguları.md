@@ -387,4 +387,4 @@ order by 1,4
 | Laura Callahan     | Inside Sales Coordinator | 124         | 1997       | 48021.55      |
 | Laura Callahan     | Inside Sales Coordinator | 87          | 1998       | 36609.64      |
 
-###❗İlk 4 çalışan performansı gösterilmiştir.
+#❗İlk 4 çalışan performansı gösterilmiştir.
